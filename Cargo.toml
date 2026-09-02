@@ -1,0 +1,22 @@
+[package]
+name = "akinator-rs"
+version = "0.2.0"
+edition = "2024"
+authors = ["FLEX-GHOST <https://github.com/FLEX-GHOST>"]
+description = "High-performance, pure Rust client library for the Akinator game with automated Cloudflare bypass, TLS fingerprinting, and memory management."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/FLEX-GHOST/akinator-rs"
+homepage = "https://github.com/FLEX-GHOST/akinator-rs"
+readme = "README.md"
+keywords = ["akinator", "game", "bot", "async", "api"]
+categories = ["api-bindings", "game-development", "asynchronous"]
+
+[dependencies]
+wreq = { version = "0.16.1", features = ["cookies", "form", "json", "gzip", "brotli", "deflate"] }
+tokio = { version = "1.53.1", features = ["sync", "time", "macros", "rt"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+thiserror = "2.0.20"
+regex = "1.13.1"
+url = "2.5.8"
+tikv-jemallocator = "0.7.0"

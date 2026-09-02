@@ -1,0 +1,7 @@
+/target
+bottest/
+scratch/
+.agents/
+*.session
+*.session-journal
+*.log
