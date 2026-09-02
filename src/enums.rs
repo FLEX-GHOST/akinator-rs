@@ -306,12 +306,15 @@ pub enum Answer {
     #[default]
     Yes = 0,
     No = 1,
-    Idk = 2,
+    DontKnow = 2,
     Probably = 3,
     ProbablyNot = 4,
 }
 
 impl Answer {
+    /// Alias for `Answer::DontKnow` ("I don't know").
+    pub const IDK: Self = Self::DontKnow;
+
     /// Returns the numerical answer code sent to Akinator servers.
     #[must_use]
     pub const fn id(&self) -> u8 {
@@ -324,7 +327,7 @@ impl Answer {
         match id {
             0 => Some(Self::Yes),
             1 => Some(Self::No),
-            2 => Some(Self::Idk),
+            2 => Some(Self::DontKnow),
             3 => Some(Self::Probably),
             4 => Some(Self::ProbablyNot),
             _ => None,
@@ -356,7 +359,7 @@ impl FromStr for Answer {
                 Ok(Self::No)
             }
             "2" | "i" | "idk" | "dont know" | "don't know" | "unknown" | "لا اعلم" | "لا أعرف" | "لا ادري" | "لا أدري" | "je ne sais pas" | "weiß nicht" | "non so" | "não sei" | "nie wiem" | "не знаю" | "bilmiyorum" | "모르겠습니다" | "分からない" | "不知道" => {
-                Ok(Self::Idk)
+                Ok(Self::DontKnow)
             }
             "3" | "p" | "py" | "probably" | "probably yes" | "likely" | "ربما" | "غالبا" | "غالباً" | "غالبا نعم" | "غالباً نعم" | "ربما نعم" | "probablement oui" | "wahrscheinlich ja" | "probabilmente sì" | "provavelmente sim" | "chyba tak" | "возможно да" | "muhtemelen" | "그럴 겁니다" | "たぶんそう" | "可能是" => {
                 Ok(Self::Probably)
